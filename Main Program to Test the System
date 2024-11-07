@@ -1,0 +1,30 @@
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Create some toll booths
+        List<TollBooth> tollBooths = new List<TollBooth>
+        {
+            new TollBooth("TB001", 5.00m),
+            new TollBooth("TB002", 6.50m),
+            new TollBooth("TB003", 4.75m)
+        };
+
+        // Create the wireless reader
+        WirelessReader reader = new WirelessReader();
+
+        // Create the toll system
+        TollSystem tollSystem = new TollSystem(tollBooths, reader);
+
+        // Simulate vehicles passing through the system
+        tollSystem.ProcessVehicle("V12345", "ABC123", "Car");
+        tollSystem.ProcessVehicle("V67890", "XYZ987", "Truck");
+        tollSystem.ProcessVehicle("V24680", "LMN456", "Motorcycle");
+
+        // Display total vehicles processed by each toll booth
+        foreach (var booth in tollBooths)
+        {
+            Console.WriteLine($"Toll Booth {booth.BoothId} processed {booth.VehiclesProcessed} vehicles.");
+        }
+    }
+}
