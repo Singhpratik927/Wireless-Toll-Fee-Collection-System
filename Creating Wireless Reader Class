@@ -1,0 +1,9 @@
+public class WirelessReader
+{
+    // This simulates reading vehicle information wirelessly.
+    public Vehicle ReadVehicleInfo(string vehicleId, string licensePlate, string vehicleType)
+    {
+        Console.WriteLine($"Wireless Reader detected vehicle {vehicleId} ({licensePlate})...");
+        return new Vehicle(vehicleId, licensePlate, vehicleType);
+    }
+}
