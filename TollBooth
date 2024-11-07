@@ -1,0 +1,21 @@
+public class TollBooth
+{
+    public string BoothId { get; set; }
+    public decimal TollAmount { get; set; }
+    public int VehiclesProcessed { get; private set; }
+
+    public TollBooth(string boothId, decimal tollAmount)
+    {
+        BoothId = boothId;
+        TollAmount = tollAmount;
+        VehiclesProcessed = 0;
+    }
+
+    // Simulate fee collection
+    public void ProcessToll(Vehicle vehicle)
+    {
+        Console.WriteLine($"Toll Booth {BoothId} processing {vehicle.VehicleId} ({vehicle.LicensePlate})...");
+        Console.WriteLine($"Toll collected: ${TollAmount}");
+        VehiclesProcessed++;
+    }
+}
