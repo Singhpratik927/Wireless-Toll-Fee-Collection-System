@@ -1,0 +1,24 @@
+public class TollSystem
+{
+    public List<TollBooth> TollBooths { get; set; }
+    public WirelessReader WirelessReader { get; set; }
+
+    public TollSystem(List<TollBooth> tollBooths, WirelessReader wirelessReader)
+    {
+        TollBooths = tollBooths;
+        WirelessReader = wirelessReader;
+    }
+
+    // Simulate vehicle passing through the system
+    public void ProcessVehicle(string vehicleId, string licensePlate, string vehicleType)
+    {
+        Vehicle vehicle = WirelessReader.ReadVehicleInfo(vehicleId, licensePlate, vehicleType);
+        
+        // Randomly pick a toll booth (In a real system, this could be based on location or load balancing)
+        Random rand = new Random();
+        int boothIndex = rand.Next(TollBooths.Count);
+        TollBooth selectedBooth = TollBooths[boothIndex];
+
+        selectedBooth.ProcessToll(vehicle);
+    }
+}
